@@ -21,7 +21,7 @@ namespace SimonSays
 
         private void newButton_Click(object sender, EventArgs e)
         {
-            //TODO: remove this screen and start the GameScreen
+            //Remove this screen and start the GameScreen
             Form f = this.FindForm();
             f.Controls.Remove(this);
             GameScreen gameScreen = new GameScreen();
@@ -32,13 +32,14 @@ namespace SimonSays
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            //TODO: end the application
+            //Play sound and end the application
             SoundPlayer end = new SoundPlayer(Properties.Resources.end);
             end.Play();
             Application.Exit();
            
         }
 
+        //play the theme song upon loading menuscreen
         private void MenuScreen_Load(object sender, EventArgs e)
         {
             SoundPlayer themeSong = new SoundPlayer(Properties.Resources.themeMusic);

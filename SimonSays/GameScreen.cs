@@ -12,9 +12,12 @@ using System.Threading;
 
 namespace SimonSays
 {
+    //Bilal Zeineddine
+    //October 18, 2021
+    //Challenge your mind in this difficult memory game, remember the sequence and get the highest score possible!
     public partial class GameScreen : UserControl
     {
-        //TODO: create guess variable to track what part of the pattern the user is at
+        //Create a guess variable to track what part of the pattern the user is at
         public static int userGuess;
         Random randGen = new Random();
         public GameScreen()
@@ -24,7 +27,7 @@ namespace SimonSays
 
         private void GameScreen_Load(object sender, EventArgs e)
         {
-            //TODO: clear the pattern list from form1, refresh, pause for a bit, and run ComputerTurn()
+            //Clear Pattern1 list and then run ComputerTurn
             Form1.pattern1.Clear();
             ComputerTurn();
         }
@@ -32,10 +35,10 @@ namespace SimonSays
         private void ComputerTurn()
         {
             
-            //TODO: get rand num between 0 and 4 (0, 1, 2, 3) and add to pattern list
+            //Get a random number between 0 and 4 and then add it to pattern1
             Form1.pattern1.Add(randGen.Next(0, 4));
 
-            //TODO: create a for loop that shows each value in the pattern by lighting up approriate button
+            //Create a for loop that shows each value in the pattern by lighting up approriate button
             for (int i = 0; i < Form1.pattern1.Count; i++)
             {
                 if (Form1.pattern1[i] == 0)
@@ -84,17 +87,17 @@ namespace SimonSays
                 }
 
             }
-            //TODO: get guess index value back to 0
+            //Set userguess back to 0
             userGuess = 0;
         
         }
 
         public void GameOver()
         {
-            //TODO: Play a game over sound
+            //Play a game over sound
             SoundPlayer gameOverSound = new SoundPlayer(Properties.Resources.gameover);
             gameOverSound.Play();
-            //TODO: close this screen and open the GameOverScreen
+            //Close this screen and open the GameOverScreen
             Form f = this.FindForm();
             f.Controls.Remove(this);
             GameOverScreen gameOverScreen = new GameOverScreen();
@@ -102,16 +105,11 @@ namespace SimonSays
 
         }
 
-        //TODO: create one of these event methods for each button
+        
         private void greenButton_Click(object sender, EventArgs e)
         {
-            //TODO: is the value at current guess index equal to a green. If so:
-            // light up button, play sound, and pause
-            // set button colour back to original
-            // add one to the guess index
-            // check to see if we are at the end of the pattern. If so:
-            // call ComputerTurn() method
-            // else call GameOver method
+            //Check if pattern1 at userguess is 0. If so, set colour to green, play sound
+            //Pause, , go back to original colour, pause, and add to userguess. Repeat for each colour.
 
             if (Form1.pattern1[userGuess] == 0)
             {
